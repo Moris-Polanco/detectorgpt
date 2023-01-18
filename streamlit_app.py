@@ -7,7 +7,7 @@ openai.api_key = os.environ.get("OPENAI_API_KEY")
 
 def detect_gpt3(prompt):
     generated_text = openai.Completion.create(
-        engine="text-davinci-003",
+        engine="text-davinci-002",
         prompt=prompt,
         max_tokens=2048,
         n=1,
@@ -16,13 +16,13 @@ def detect_gpt3(prompt):
     ).choices[0].text
 
     prompt_prob = openai.Completion.create(
-        engine="text-davinci-003",
+        engine="text-davinci-002",
         prompt=prompt,
         log_probs=True
     ).log_probs
 
     generated_text_prob = openai.Completion.create(
-        engine="text-davinci-003",
+        engine="text-davinci-002",
         prompt=generated_text,
         log_probs=True
     ).log_probs
