@@ -3,6 +3,8 @@ import openai
 import os
 from Levenshtein import distance
 
+# Autenticación de OpenAI (oculta la clave en una variable de entorno)
+openai.api_key = os.environ.get("OPENAI_API_KEY")
 
 def detect_gpt3(prompt):
     completions = openai.Completion.create(
