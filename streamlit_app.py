@@ -4,9 +4,6 @@ import openai
 import streamlit as st
 import os
 
-# Autenticación de OpenAI (oculta la clave en una variable de entorno)
-openai.api_key = os.environ.get("OPENAI_API_KEY")
-
 def detect_gpt3(prompt):
     completions = openai.Completion.create(
         engine="text-davinci-002",
@@ -20,7 +17,7 @@ def detect_gpt3(prompt):
     generated_texts = [choice.text for choice in completions.choices]
     similarity_scores = []
     for generated_text in generated_texts:
-        similarity_scores.append(1-jaccard_distance(set(prompt.split()), set(generated_text.split())))
+        similarity_scores.append(1-edit_distance(prompt,generated_text)/max(len(prompt),len(generated_text)))
     return max(similarity_scores)
 
 st.title("GPT-3 Text Detection App")
