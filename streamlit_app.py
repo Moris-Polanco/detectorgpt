@@ -5,12 +5,9 @@ import os
 # Autenticación de OpenAI (oculta la clave en una variable de entorno)
 openai.api_key = os.environ.get("OPENAI_API_KEY")
 
-# Set the API key
-openai.api_key = "your_api_key"
-
 # Create a function that uses GPT-3 to generate text
 def generate_text(prompt):
-    completions = openai.Completion.create(engine="text-davinci-002", prompt=prompt, max_tokens=1024, n=1,stop=None,temperature=0.5)
+    completions = openai.Completion.create(engine="text-davinci-003", prompt=prompt, max_tokens=1024, n=1,stop=None,temperature=0.5)
     message = completions.choices[0].text
     return message.strip()
 
