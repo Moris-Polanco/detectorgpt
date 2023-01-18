@@ -7,23 +7,6 @@ import os
 # Autenticación de OpenAI (oculta la clave en una variable de entorno)
 openai.api_key = os.environ.get("OPENAI_API_KEY")
 
-Sure, here's an example of how you can use the Jaccard similarity to compare the similarity between the original text and the generated text:
-
-Copy code
-import streamlit as st
-import openai_secret_manager
-from nltk import jaccard_distance
-
-# Get API key for GPT-3
-secrets = openai_secret_manager.get_secrets("openai")
-api_key = secrets["api_key"]
-
-# Import the OpenAI library
-import openai
-
-# Set API key
-openai.api_key = api_key
-
 def detect_gpt3(prompt):
     completions = openai.Completion.create(
         engine="text-davinci-002",
